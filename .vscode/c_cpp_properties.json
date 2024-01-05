@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/ywc/ws_livox/devel/include/**",
+                "/opt/ros/noetic/include/**",
+                "/home/ywc/ws_my_fast_lio2/src/ieskf_slam/include/**",
+                "/usr/include/**",
+                "${workspaceFolder}/include/my_fastlio2"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14"
+        }
+    ],
+    "version": 4
+}

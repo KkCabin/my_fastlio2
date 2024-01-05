@@ -1,0 +1,5 @@
+<launch>
+    <rosparam command="load" file="$(find my_fastlio2)/config/avia.yaml" />
+    <node pkg="my_fastlio2" type="ieskf_frontend_node" name="ieskf_frontend_node" output="screen" />
+	<node  pkg="rviz" type="rviz" name="rviz" args="-d $(find my_fastlio2)/rviz/show.rviz" />
+</launch>
