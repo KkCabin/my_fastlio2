@@ -3,7 +3,7 @@
  * @Author: Wangchao Yu
  * @Date: 2024-01-04 18:55:10
  * @LastEditors: Wangchao Yu
- * @LastEditTime: 2024-01-04 21:57:53
+ * @LastEditTime: 2024-01-05 20:21:42
  */
 #include <string.h>
 #include "frontend_wrapper.h"
@@ -20,7 +20,6 @@ namespace Wrapper {
 
         cloud_sub = nh.subscribe(lidar_topic, 100, &FrontEndWrapper::lidarCloudMsgCallback, this);
         imu_sub = nh.subscribe(imu_topic, 100, &FrontEndWrapper::imuMsgCallback, this);
-        odometry_sub = nh.subscribe("/odometry", 100, &FrontEndWrapper::odometryMsgCallback, this);
 
         int lidar_type = 0;
         nh.param<int>("wrapper/lidar_type", lidar_type, AVIA);
@@ -50,17 +49,6 @@ namespace Wrapper {
         imu.acceleration = {msg->linear_acceleration.x, msg->linear_acceleration.y, msg->linear_acceleration.z};
         imu.gyroscope = {msg->angular_velocity.x, msg->angular_velocity.y, msg->angular_velocity.z};
         front_end_ptr->addImu(imu);
-    }
-
-    void FrontEndWrapper::odometryMsgCallback(const nav_msgs::OdometryPtr& msg) {
-        IESKFSlam::Pose pose;
-        pose.timestamp.fromNsec(msg->header.stamp.toNSec());
-        pose.position = {msg->pose.pose.position.x,msg->pose.pose.position.y,msg->pose.pose.position.z};
-        pose.quaterniond.w() = msg->pose.pose.orientation.w;
-        pose.quaterniond.x() = msg->pose.pose.orientation.x;
-        pose.quaterniond.y() = msg->pose.pose.orientation.y;
-        pose.quaterniond.z() = msg->pose.pose.orientation.z;
-        front_end_ptr->addPose(pose);
     }
 
     void FrontEndWrapper::run() {

@@ -3,7 +3,7 @@
  * @Author: Wangchao Yu
  * @Date: 2024-01-04 18:48:22
  * @LastEditors: Wangchao Yu
- * @LastEditTime: 2024-01-04 20:45:07
+ * @LastEditTime: 2024-01-05 20:21:47
  */
 #pragma once
 #include <ros/ros.h>
@@ -23,7 +23,6 @@ namespace Wrapper {
         private:
             ros::Subscriber cloud_sub;
             ros::Subscriber imu_sub;
-            ros::Subscriber odometry_sub;
             ros::Publisher curr_cloud_pub;
 
             std::shared_ptr<AVIAProcess> lidar_process_ptr;
@@ -35,7 +34,6 @@ namespace Wrapper {
 
             void lidarCloudMsgCallback(const sensor_msgs::PointCloud2Ptr & msg);
             void imuMsgCallback(const sensor_msgs::ImuPtr & msg);
-            void odometryMsgCallback(const nav_msgs::OdometryPtr& msg);
             void publishMsg();
 
             void run();

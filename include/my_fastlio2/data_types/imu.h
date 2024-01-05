@@ -3,7 +3,7 @@
  * @Author: Wangchao Yu
  * @Date: 2024-01-04 11:50:58
  * @LastEditors: Wangchao Yu
- * @LastEditTime: 2024-01-04 21:17:04
+ * @LastEditTime: 2024-01-05 17:17:30
  */
 #pragma once
 #include <Eigen/Dense>
@@ -15,7 +15,7 @@ namespace IESKFSlam {
         public:
             TimeStamp timestamp;
             Eigen::Vector3d acceleration = Eigen::Vector3d::Zero();   // 加速度计，测量的是线加速度
-            Eigen::Vector3d gyroscope = Eigen::Vector3d::Zero();    // 陀螺仪，测量的角速度
+            Eigen::Vector3d gyroscope = Eigen::Vector3d::Zero();      // 陀螺仪，测量的角速度
 
         public:
             void clear() {

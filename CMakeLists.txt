@@ -42,7 +42,11 @@ include_directories(
   ${YAML_CPP_INCLUDE_DIR}
 )
 
-SET(RONTEND_FILE src/my_fastlio2/modules/frontend.cpp)
+SET(RONTEND_FILE
+    src/my_fastlio2/modules/frontend.cpp
+    src/my_fastlio2/modules/map_manager.cpp
+    src/my_fastlio2/modules/state_manager.cpp
+)
 SET(FRONTEND_WRAPPER_FILE src/wrapper/frontend_wrapper.cpp)
 
 add_executable(ieskf_frontend_node src/app/my_fastlio2.cpp
